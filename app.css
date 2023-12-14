@@ -1,5 +1,54 @@
+body{
+    background: linear-gradient(85deg,#ffd700,#ff4500);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+}
+#container{
+    position: relative;
+}
 ul{
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+input{
+    font-family: 'Poppins', sans-serif;
+    background-color: orange;
+    width: 30vw;
+    text-indent: 1vw;
+    border: 1px solid red;
+}
+
+div{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    text-indent: 1vw;
+    background-color: orange;
+    max-height: 40vh;
+    min-width: 30vw;
+    max-width: 30vw;
+    border: 1px solid red;
+    border-top: none;
+    cursor: pointer;
+    overflow-y: auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+div .hover{
+    background-color: orangered;
+}
+div::-webkit-scrollbar{
+    width: 0;
 }

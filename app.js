@@ -19,28 +19,34 @@ const fruits=[
 
 function search(query){
     let searchTerm=query.toLowerCase();
+    // makes sure the search terms aren't case sensitive
     let results=[];
     if(searchTerm===''){
         return results;
     }
+    // clears the dropdown menu if the query is backspaced
     fruits.forEach(fruitName=>{
         if(fruitName.toLowerCase().includes(searchTerm)){
             results.push(fruitName);
         }
+    // only pushes applicable fruits to the list
     });
     return results;
 }
 function searchHandler(e){
     let query=searchBar.value;
-    let results=search(query)
+    let results=search(query);
+    // runs search() on whatever is entered into searchBar
     resultList.innerHTML='';
     results.forEach(result=>{
         let listItem=document.createElement('li');
         listItem.textContent=result;
         resultList.appendChild(listItem);
+    // creates an li for each of the elements in the results array the search() created
     })
 }
 function showSuggestions(){
+    // highlights whichever li element you're currently over
     resultList.addEventListener('mouseover',function(e){
         if(e.target.tagName==='LI'){
             e.target.classList.add('hover');
@@ -54,6 +60,7 @@ function showSuggestions(){
 }
 function useSuggestion(e){
     if(e.target.tagName==='LI'){
+    // prevents being able to highlight and select multiple fruit names
         let selected=e.target.textContent;
         searchBar.value=selected;
         resultList.innerHTML='';

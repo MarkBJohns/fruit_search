@@ -20,24 +20,24 @@ const results=[];
 function search(query){
     let searchTerm=query.toLowerCase();
     let results=[];
+    if(searchTerm===''){
+        return results;
+    }
     fruits.forEach(fruitName=>{
-        if(fruitName.toLowerCase().includes(searchTerm)){
+        if(fruitName.toLowerCase().includes(searchTerm)&&fruitName.toLowerCase().startsWith(searchTerm)){
             results.push(fruitName);
         }
     });
     return results;
 }
 function searchHandler(e){
-    const inputVal=e.target.value.toLowerCase();
-    if(inputVal===''){
-        resultsList.innerHTML='';
-        return;
-    }
-    const searchResults=search(inputVal);
-    searchResults.forEach(result=>{
-        const listItem=document.createElement('li');
+    let query=searchBar.value;
+    let results=search(query)
+    resultsList.innerHTML='';
+    results.forEach(result=>{
+        let listItem=document.createElement('li');
         listItem.textContent=result;
         resultsList.appendChild(listItem);
-    });
+    })
 }
 searchBar.addEventListener('keyup',searchHandler);
